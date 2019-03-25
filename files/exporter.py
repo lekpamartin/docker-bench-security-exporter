@@ -22,10 +22,11 @@ def fetch_data():
     checks  = data["checks"]
     score = data["score"]
     start = data["start"]
-    result = "score{version=\"%s\"} %s\n" %(version,score)
+    result = "# SCORE \nscore{version=\"%s\"} %s\n" %(version,score)
     for i in data["tests"]:
       ID = i["id"]
       DESC = i["desc"]
+      result += "\n# %s %s\n" %(ID,DESC)
       for j in i["results"]:
         id = j["id"]
         desc = j["desc"]
@@ -35,7 +36,7 @@ def fetch_data():
           value = 1
         else:
           value = 2
-        result += "check_%s{group_desc=\"%s\",id=\"%s\",version=\"%s\"} %s\n" %(ID,DESC,id,version,value)
+        result += "check{group_id=\"%s\",id=\"%s\",desc=\"%s\",version=\"%s\"} %s\n" %(ID,id,desc,version,value)
 
   return result
 
