@@ -26,14 +26,8 @@ docker run -d --name docker-bench-security-exporter -p 9700:9700 lekpamartin/doc
 ```
 
 ## docker-compose
-
-Example compose file:
-
-    version: '3'
-    
-    services:
-      docker-bench-security-exporter:
-        image: lekpamartin/docker-bench-security-exporter
-        restart: unless-stopped
-        ports:
-          - 9700:9700
+```bash
+git clone https://github.com/lekpamartin/docker-bench-security-exporter.git
+cd docker-bench-security-exporter 
+docker-compose ud -d
+```

@@ -1,11 +1,15 @@
-version: '2.1'
+version: '3'
 
 services:
-  uptimerobot_exporter:
-    build: .
+  docker-bench-security-exporter:
+    image: lekpamartin/docker-bench-security-exporter
     restart: unless-stopped
-    environment:
-      UPTIMEROBOT_API_KEY: yourkeyhere
+    net: host
     ports:
-      - 9705:9705
+      - 9700:9700
     read_only: true
+    volumes:
+        - /var/lib:/var/lib
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /usr/lib/systemd:/usr/lib/systemd
+        - /etc:/etc
