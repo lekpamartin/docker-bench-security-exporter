@@ -16,8 +16,8 @@ Accepted parameters:
 You can either pass script arguments (run `python exporter.py -h` for an explanation)
 or set the following environment variables:
 
-* `UPTIMEROBOT_SERVER_NAME`
-* `UPTIMEROBOT_SERVER_PORT`
+* `DOCKERBENCHEXPORTER_SERVER_NAME`
+* `DOCKERBENCHEXPORTER_SERVER_PORT`
 
 ## Docker
 
