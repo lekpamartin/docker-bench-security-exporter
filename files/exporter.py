@@ -9,11 +9,9 @@ import time
 ## Monitors
 def fetch_data():
   file = 'docker-bench-security.sh.log.json'
-  if os.path.getmtime(file): 
-    #if time.ctime(os.path.getmtime(file)) >= 360:
-    #  subprocess.call(['./docker-bench-security.sh'])
-    print('exist')
-  else:
+  try:
+    test = open(file)
+  except:
       subprocess.call(['./docker-bench-security.sh'])
   
   with open(file) as json_file:
@@ -30,6 +28,8 @@ def fetch_data():
       for j in i["results"]:
         id = j["id"]
         desc = j["desc"]
+        try:
+          details = j["details"]
         if j["result"] == "INFO":
           value = 0
         elif j["result"] == "WARN":
