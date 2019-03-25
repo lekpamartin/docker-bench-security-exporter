@@ -5,6 +5,7 @@ RUN \
 	apk upgrade --no-cache && \
 	apk add --no-cache \
 		docker \
+		iproute2 \
 		git \
 		python3 \
 		dumb-init && \
