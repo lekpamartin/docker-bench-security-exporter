@@ -16,7 +16,7 @@ def fetch_data():
     for i in data["tests"]:
       for j in i["results"]:
         if j["result"] == "WARN":
-          result += "test"
+          result += "test %s %s" %(i,j)
 
   return result
 

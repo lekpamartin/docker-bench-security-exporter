@@ -10,10 +10,9 @@ RUN \
 		dumb-init && \
 	rm -rf /usr/bin/docker-* /usr/bin/dockerd && \
 	mkdir /usr/local/bin/tests && \
-	cd /tmp && \
-	git clone https://github.com/docker/docker-bench-security.git
+	git clone https://github.com/docker/docker-bench-security.git /opt/docker-bench-security
 
-WORKDIR tmp/docker-bench-security
+WORKDIR /opt/docker-bench-security
 
 COPY files/exporter.py /exporter.py
 
