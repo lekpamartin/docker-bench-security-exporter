@@ -5,10 +5,10 @@ RUN \
 	apk upgrade --no-cache && \
 	apk add --no-cache \
 		docker \
+		python3 \
 		dumb-init && \
 	rm -rf /usr/bin/docker-* /usr/bin/dockerd && \
-	mkdir /usr/local/bin/tests && \
-	pip install --no-cache-dir --upgrade requests pip
+	mkdir /usr/local/bin/tests
 
 COPY files/exporter.py /exporter.py
 
