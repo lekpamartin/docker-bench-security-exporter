@@ -7,8 +7,12 @@ import shutil
 
 ## Monitors
 def fetch_data():
-  os.chdir("/tmp/docker-bench-security")
-  subprocess.call(['./docker-bench-security.sh'])
+  file = docker-bench-security.sh.log.json
+  if os.path.isfile(file): 
+    if time.ctime(os.path.getmtime(file)) >= 360:
+      subprocess.call(['./docker-bench-security.sh'])
+  else:
+      subprocess.call(['./docker-bench-security.sh'])
   
   with open('docker-bench-security.sh.log.json') as json_file:
     data = json.load(json_file)
@@ -29,13 +33,8 @@ class ReqHandler(http.server.BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/plain")
         self.end_headers()
         self.wfile.write(
-            format_prometheus(answer.get('monitors')).encode('utf-8')
-        )
-        self.wfile.write(
-            format_prometheus_accountdetails(accountdetails.get('account')).encode('utf-8')
-        )
-        self.wfile.write(
-            format_prometheus_psp(psp.get('psps')).encode('utf-8')
+            #format_prometheus(answer.get('monitors')).encode('utf-8')
+            fetch_data().encode('utf-8')
         )
 
 

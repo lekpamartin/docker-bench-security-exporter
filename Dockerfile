@@ -10,7 +10,7 @@ RUN \
 		python3 \
 		dumb-init && \
 	rm -rf /usr/bin/docker-* /usr/bin/dockerd && \
-	mkdir /usr/local/bin/tests && \
+	#mkdir /usr/local/bin/tests && \
 	git clone https://github.com/docker/docker-bench-security.git /opt/docker-bench-security
 
 WORKDIR /opt/docker-bench-security

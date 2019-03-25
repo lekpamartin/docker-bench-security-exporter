@@ -22,7 +22,10 @@ or set the following environment variables:
 ## Docker
 
 ```bash
-docker run -d --name docker-bench-security-exporter -p 9700:9700 lekpamartin/docker-bench-security-exporter
+docker run -d --name docker-bench-security-exporter \
+	-p 9700:9700 \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	lekpamartin/docker-bench-security-exporter
 ```
 
 ## docker-compose
