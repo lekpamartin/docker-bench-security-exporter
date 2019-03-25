@@ -13,7 +13,7 @@ or set the following environment variables:
 
 * `DOCKERBENCHEXPORTER_SERVER_NAME`
 * `DOCKERBENCHEXPORTER_SERVER_PORT`
-You can personnalise your check :
+<br>You can personnalise your check in the file :
 ```bash
 check.env
 ```

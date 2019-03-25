@@ -6,6 +6,8 @@ networks:
 services:
   instance:
     image: lekpamartin/docker-bench-security-exporter
+    labels:
+      - co.elastic.logs/disable=true
     restart: unless-stopped
     networks: 
       - host

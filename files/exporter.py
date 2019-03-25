@@ -21,7 +21,7 @@ def fetch_data():
     checks  = data["checks"]
     score = data["score"]
     start = data["start"]
-    result = "# SCORE \nscore{version=\"%s\"} %s\n" %(version,score)
+    result = "# SCORE \nscore{dockerbenchsecurity=\"%s\"} %s\n" %(version,score)
     for i in data["tests"]:
       ID = i["id"]
       DESC = i["desc"]
@@ -39,7 +39,7 @@ def fetch_data():
           value = 1
         else:
           value = 2
-        result += "check{group_id=\"%s\",id=\"%s\",desc=\"%s\",version=\"%s\",details=\"%s\"} %s\n" %(ID,id,desc,version,details,value)
+        result += "check{group_id=\"%s\",id=\"%s\",desc=\"%s\",dockerbenchsecurity=\"%s\",details=\"%s\"} %s\n" %(ID,id,desc,version,details,value)
   return result
 
 
