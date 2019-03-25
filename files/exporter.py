@@ -2,25 +2,40 @@ import argparse
 import http.server
 import os
 import subprocess
-import shutil
+import json
+import time
 
 
 ## Monitors
 def fetch_data():
-  file = docker-bench-security.sh.log.json
-  if os.path.isfile(file): 
-    if time.ctime(os.path.getmtime(file)) >= 360:
-      subprocess.call(['./docker-bench-security.sh'])
+  file = 'docker-bench-security.sh.log.json'
+  if os.path.getmtime(file): 
+    #if time.ctime(os.path.getmtime(file)) >= 360:
+    #  subprocess.call(['./docker-bench-security.sh'])
+    print('exist')
   else:
       subprocess.call(['./docker-bench-security.sh'])
   
-  with open('docker-bench-security.sh.log.json') as json_file:
+  with open(file) as json_file:
     data = json.load(json_file)
-    result = ''
+    version = data["dockerbenchsecurity"]
+    checks  = data["checks"]
+    score = data["score"]
+    start = data["start"]
+    result = "score{version=\"%s\"} %s\n" %(version,score)
     for i in data["tests"]:
+      ID = i["id"]
+      DESC = i["desc"]
       for j in i["results"]:
-        if j["result"] == "WARN":
-          result += "test %s %s" %(i,j)
+        id = j["id"]
+        desc = j["desc"]
+        if j["result"] == "INFO":
+          value = 0
+        elif j["result"] == "WARN":
+          value = 1
+        else:
+          value = 2
+        result += "check_%s{group_desc=\"%s\",id=\"%s\",version=\"%s\"} %s\n" %(ID,DESC,id,version,value)
 
   return result
 

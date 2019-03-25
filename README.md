@@ -1,11 +1,6 @@
 # docker-bench-security-exporter
 
 
-## Requirements
-
-* Python
-* [requests](http://www.python-requests.org/en/master/)
-
 ## Running
 
 Accepted parameters:
