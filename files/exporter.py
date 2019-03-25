@@ -9,10 +9,11 @@ import time
 ## Monitors
 def fetch_data():
   file = 'docker-bench-security.sh.log.json'
+  ARGS = os.environ['ARGS']
   try:
     test = open(file)
   except:
-      subprocess.call(['./docker-bench-security.sh'])
+      subprocess.call(["./docker-bench-security.sh %s" ARGS])
   
   with open(file) as json_file:
     data = json.load(json_file)
@@ -39,7 +40,6 @@ def fetch_data():
         else:
           value = 2
         result += "check{group_id=\"%s\",id=\"%s\",desc=\"%s\",version=\"%s\",details=\"%s\"} %s\n" %(ID,id,desc,version,details,value)
-
   return result
 
 

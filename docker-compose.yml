@@ -19,3 +19,5 @@ services:
         - /var/lib/docker:/var/lib/docker
         - /usr/lib/systemd:/usr/lib/systemd
         - /var/run/docker.sock:/var/run/docker.sock
+    env_file:
+      - check.env

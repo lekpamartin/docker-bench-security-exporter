@@ -13,9 +13,13 @@ or set the following environment variables:
 
 * `DOCKERBENCHEXPORTER_SERVER_NAME`
 * `DOCKERBENCHEXPORTER_SERVER_PORT`
+You can personnalise your check :
+```bash
+check.env
+```
 
-## Docker
-
+## Docker run
+You have to mount all used directory and files
 ```bash
 docker run -d --name docker-bench-security-exporter \
 	-p 9700:9700 \
