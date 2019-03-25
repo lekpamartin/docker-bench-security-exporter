@@ -12,4 +12,4 @@ RUN \
 
 COPY files/exporter.py /exporter.py
 
-CMD [ "python", "/exporter.py" ]
+CMD [ "python3", "/exporter.py" ]

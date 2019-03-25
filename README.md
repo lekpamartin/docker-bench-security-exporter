@@ -29,5 +29,5 @@ docker run -d --name docker-bench-security-exporter -p 9700:9700 lekpamartin/doc
 ```bash
 git clone https://github.com/lekpamartin/docker-bench-security-exporter.git
 cd docker-bench-security-exporter 
-docker-compose ud -d
+docker-compose up -d
 ```
