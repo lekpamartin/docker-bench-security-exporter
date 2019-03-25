@@ -7,8 +7,6 @@ import shutil
 
 ## Monitors
 def fetch_data():
-  os.chdir("/tmp")
-  os.system("git clone https://github.com/docker/docker-bench-security.git")
   os.chdir("/tmp/docker-bench-security")
   subprocess.call(['./docker-bench-security.sh'])
   
@@ -18,7 +16,7 @@ def fetch_data():
     for i in data["tests"]:
       for j in i["results"]:
         if j["result"] == "WARN":
-          ult += "dockerbenchsecurity{version=\"" + data["dockerbenchsecurity"] + "\",instance=\"" + myhost + "\",cat=\"" + i["desc"] + "\",id=\"" + j["id"] + "\",name=\"" + j["desc"] + "\",details=\"" + j.get('details', 'N/A')+ "\"} 1\n"
+          result += "test"
 
   return result
 
@@ -55,7 +53,7 @@ if __name__ == '__main__':
   )
   parser.add_argument(
     '--server_port', '-p',
-    default=9705,
+    default=9700,
     type=int,
     help='Port to bind to.'
   )
