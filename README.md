@@ -13,7 +13,7 @@ or set the following environment variables:
 
 * `DOCKERBENCHEXPORTER_SERVER_NAME`
 * `DOCKERBENCHEXPORTER_SERVER_PORT`
-<br>You can personnalise your check in the file :
+<br><br>You can personnalise your check in the file :
 ```bash
 check.env
 ```
@@ -33,3 +33,6 @@ git clone https://github.com/lekpamartin/docker-bench-security-exporter.git
 cd docker-bench-security-exporter 
 docker-compose up -d
 ```
+
+## docs
+Use https://github.com/docker/docker-bench-security
