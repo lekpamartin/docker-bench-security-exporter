@@ -10,7 +10,12 @@ RUN \
 		python3 \
 		dumb-init && \
 	rm -rf /usr/bin/docker-* /usr/bin/dockerd && \
-	git clone https://github.com/docker/docker-bench-security.git /opt/docker-bench-security
+	git clone https://github.com/docker/docker-bench-security.git /opt/docker-bench-security && \
+	addgroup docker && adduser -S -D -G docker -h /opt/docker-bench-security docker && \
+	chown -R docker:root /opt/docker-bench-security && \
+	echo "0 11 * * 1-5 root /opt/docker-bench-security/docker-bench-security.sh \$ARGS > /dev/null" >> /etc/crontab
+
+USER docker
 
 WORKDIR /opt/docker-bench-security
 
