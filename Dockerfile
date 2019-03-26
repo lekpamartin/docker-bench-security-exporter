@@ -17,7 +17,7 @@ RUN \
 WORKDIR /opt/docker-bench-security
 
 HEALTHCHECK --interval=5m --timeout=3s \
-	CMD curl -f http://localhost:$DOCKERBENCHEXPORTER_SERVER_PORT/ || exit 1
+	CMD curl -f http://$DOCKERBENCHEXPORTER_SERVER_NAME:$DOCKERBENCHEXPORTER_SERVER_PORT/ || exit 1
 
 COPY files/exporter.py /exporter.py
 
