@@ -11,11 +11,7 @@ RUN \
 		dumb-init && \
 	rm -rf /usr/bin/docker-* /usr/bin/dockerd && \
 	git clone https://github.com/docker/docker-bench-security.git /opt/docker-bench-security && \
-	addgroup docker-bench && adduser -S -D -G docker-bench -h /opt/docker-bench-security docker-bench && \
-	chown -R docker-bench:root /opt/docker-bench-security && \
-	echo "0 11 * * 1-5 docker-bench /opt/docker-bench-security/docker-bench-security.sh \$ARGS > /dev/null" >> /etc/crontab
-
-USER docker-bench
+	echo "0 11 * * 1-5 root /opt/docker-bench-security/docker-bench-security.sh \$ARGS > /dev/null" >> /etc/crontab
 
 WORKDIR /opt/docker-bench-security
 
