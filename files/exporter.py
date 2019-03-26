@@ -1,7 +1,6 @@
 import argparse
 import http.server
 import os
-import subprocess
 import json
 import time
 
@@ -13,7 +12,7 @@ def fetch_data():
   try:
     test = open(file)
   except:
-      subprocess.call(["./docker-bench-security.sh %s" ARGS])
+      os.system("/opt/docker-bench-security/docker-bench-security.sh %s" %ARGS)
   
   with open(file) as json_file:
     data = json.load(json_file)
