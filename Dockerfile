@@ -7,6 +7,7 @@ RUN \
 		docker \
 		iproute2 \
 		git \
+		curl \
 		python3 \
 		dumb-init && \
 	rm -rf /usr/bin/docker-* /usr/bin/dockerd && \
@@ -14,6 +15,9 @@ RUN \
 	echo "0 11 * * 1-5 root /opt/docker-bench-security/docker-bench-security.sh \$ARGS > /dev/null" >> /etc/crontab
 
 WORKDIR /opt/docker-bench-security
+
+HEALTHCHECK --interval=5m --timeout=3s \
+	CMD curl -f http://localhost:$DOCKERBENCHEXPORTER_SERVER_PORT/ || exit 1
 
 COPY files/exporter.py /exporter.py
 
