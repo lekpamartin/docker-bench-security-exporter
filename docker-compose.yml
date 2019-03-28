@@ -14,12 +14,12 @@ services:
     ports:
       - 9700:9700
     volumes:
-        - /etc/default/docker:/etc/default/docker
-        - /etc/docker:/etc/docker
-        - /usr/bin/docker-containerd:/usr/bin/docker-containerd
-        - /usr/bin/docker-runc:/usr/bin/docker-runc
-        - /var/lib/docker:/var/lib/docker
-        - /usr/lib/systemd:/usr/lib/systemd
-        - /var/run/docker.sock:/var/run/docker.sock
+        - /etc/default/docker:/etc/default/docker:ro
+        - /etc/docker:/etc/docker:ro
+        - /usr/bin/docker-containerd:/usr/bin/docker-containerd:ro
+        - /usr/bin/docker-runc:/usr/bin/docker-runc:ro
+        - /var/lib/docker:/var/lib/docker:ro
+        - /usr/lib/systemd:/usr/lib/systemd:ro
+        - /var/run/docker.sock:/var/run/docker.sock:ro
     env_file:
       - check.env
