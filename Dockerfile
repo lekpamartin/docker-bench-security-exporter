@@ -12,7 +12,7 @@ RUN \
 		dumb-init && \
 	rm -rf /usr/bin/docker-* /usr/bin/dockerd && \
 	git clone https://github.com/docker/docker-bench-security.git /opt/docker-bench-security && \
-	echo "0 10 * * 1-5 root /opt/docker-bench-security/docker-bench-security.sh \$ARGS > /dev/null" >> /etc/crontab
+	echo "/opt/docker-bench-security/docker-bench-security.sh \$ARGS > /dev/null" >> /etc/periodic/daily/0-docker-bench-security
 
 WORKDIR /opt/docker-bench-security
 
